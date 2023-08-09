@@ -78,6 +78,7 @@ public class WeatherForecastTestSuite {
         void testTemperatureMedianOddCollection() {
             //Given
             WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+            when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
 
             //When
             Double result = weatherForecast.medianTemperature();
