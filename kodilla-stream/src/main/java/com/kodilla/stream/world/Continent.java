@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Continent {
-    private final List<Country> continent = new ArrayList<>();
+    private List<Country> continent = new ArrayList<>();
 
-    public Continent(){
+    public Continent(int countryNumber){
+        for(int i=0; i<countryNumber; i++)
         continent.add(new Country(BigDecimal.valueOf(1111000011110000L)));
-        continent.add(new Country(BigDecimal.valueOf(1111000011110001L)));
-        continent.add(new Country(BigDecimal.valueOf(1111000011110002L)));
+    }
+
+    public void addCountrys(int countryNumber){
+        for(int i=0; i<countryNumber; i++)
+            continent.add(new Country(BigDecimal.valueOf(1111000011110000L)));
     }
 
     public List<Country> getContinent() {
