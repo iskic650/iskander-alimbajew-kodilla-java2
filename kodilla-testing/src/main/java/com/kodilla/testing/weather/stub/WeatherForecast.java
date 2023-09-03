@@ -35,7 +35,7 @@ public class WeatherForecast {
         }
         Collections.sort(temperatureList);
         if(temperatureList.size()%2 == 1){
-            result = temperatureList.get(temperatureList.size()/2 -1);
+            result = temperatureList.get(temperatureList.size()/2);
         }else result = (temperatureList.get(temperatureList.size() / 2 -1)
                 + temperatureList.get(temperatureList.size() / 2)) / 2;
         return result;
