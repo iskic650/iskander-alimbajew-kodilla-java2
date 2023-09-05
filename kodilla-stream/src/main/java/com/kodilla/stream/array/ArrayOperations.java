@@ -5,8 +5,8 @@ import java.util.stream.IntStream;
 
 public interface ArrayOperations {
     static double getAverage(int[] numbers) {
-        IntStream.range(0, numbers.length).forEach(System.out::println);
-        OptionalDouble result = IntStream.range(0, numbers.length).average();
+        IntStream.range(0, numbers.length).map(i -> numbers[i]).forEach(System.out::println);
+        OptionalDouble result = IntStream.range(0, numbers.length).map(i -> numbers[i]).average();
         return result.getAsDouble();
     }
 
