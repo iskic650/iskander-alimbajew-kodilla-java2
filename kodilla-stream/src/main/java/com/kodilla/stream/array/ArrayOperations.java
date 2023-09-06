@@ -8,6 +8,7 @@ public interface ArrayOperations {
         IntStream.range(0, numbers.length).map(i -> numbers[i]).forEach(System.out::println);
         OptionalDouble result = IntStream.range(0, numbers.length).map(i -> numbers[i]).average();
         return result.getAsDouble();
-    }
+    }//get lista tablica
+    //localDate. board. //tasklist.data.isBefore.isAfter  days.beatween(data, data) //do dni
 
 }
