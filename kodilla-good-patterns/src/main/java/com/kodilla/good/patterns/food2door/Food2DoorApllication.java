@@ -10,6 +10,6 @@ public class Food2DoorApllication {
     public static void main(String[] args) {
         SuplierOrderDto suplierOrderDto = new SuplierOrderDto("suplierName", 1, 7);
         FoodOrderProcessUnifier foodOrderProcessUnifier = new FoodOrderProcessUnifier(new FoodOrderService(), new F2DInformationService());
-        foodOrderProcessUnifier.process(foodOrderProcessUnifier.orderProcessReciever(new SuplierPaymentConfirmation("suplierName", true), suplierOrderDto));
+        foodOrderProcessUnifier.process(foodOrderProcessUnifier.orderProcessReceiver(new SuplierPaymentConfirmation("suplierName", true), suplierOrderDto));
     }
 }

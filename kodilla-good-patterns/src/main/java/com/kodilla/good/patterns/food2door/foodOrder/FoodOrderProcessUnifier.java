@@ -15,7 +15,7 @@ public class FoodOrderProcessUnifier {
         this.f2DInformationService = f2DInformationService;
     }
 
-    public FoodOrderDto orderProcessReciever(SuplierPaymentConfirmation suplierPaymentConfirmation, SuplierOrderDto suplierOrderDto) {
+    public FoodOrderDto orderProcessReceiver(SuplierPaymentConfirmation suplierPaymentConfirmation, SuplierOrderDto suplierOrderDto) {
         boolean orderConfirmation = suplierPaymentConfirmation.process().getConfirm();
 
         if(orderConfirmation && (Objects.equals(suplierOrderDto.getSuplierName(), suplierPaymentConfirmation.getSuplierName()))) {
