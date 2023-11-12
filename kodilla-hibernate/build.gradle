@@ -25,7 +25,7 @@ dependencies {
     builder = 'paketobuildpacks/builder-jammy-base:latest'
 }*/
 
-task prepareKotlinBuildScriptModel {
+tasks.register('prepareKotlinBuildScriptModel') {
 
 }
 
