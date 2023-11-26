@@ -1,12 +1,13 @@
 package com.kodilla.hibernate.task;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 import java.util.Date;
+
 
 @Entity
 @Table(name = "TASKS")
-public class Task {
+public final class Task {
 
     private int id;
     private String description;
@@ -22,19 +23,43 @@ public class Task {
         this.duration = duration;
     }
 
+    @Id
+    @GeneratedValue
+    @NotNull
+    @Column(name = "ID", unique = true)
     public int getId() {
         return id;
     }
 
+    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }
 
+    @NotNull
+    @Column(name="CREATED")
     public Date getCreated() {
         return created;
     }
 
+    @Column(name="DURATION")
     public int getDuration() {
         return duration;
+    }
+
+    private void setId(int id) {
+        this.id = id;
+    }
+
+    private void setDescription(String description) {
+        this.description = description;
+    }
+
+    private void setCreated(Date created) {
+        this.created = created;
+    }
+
+    private void setDuration(int duration) {
+        this.duration = duration;
     }
 }
