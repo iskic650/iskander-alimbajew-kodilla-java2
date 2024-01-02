@@ -11,12 +11,23 @@ public class WorldTestSuite {
     @Test
     void testGetPeopleQuantity() {
         //Given
-        World world = new World(2);
-        world.addContinents(1, 3);
+        World world = new World();
+
+        world.addContinent("Europe");
+        world.getWorld().get(0).addCountry("Polska");
+        world.getWorld().get(0).addCountry("Czechy");
+
+        world.addContinent("Afryka");
+        world.getWorld().get(0).addCountry("Tunezja");
+        world.getWorld().get(0).addCountry("RPA");
+
+        world.addContinent("Ameryka Północna");
+        world.getWorld().get(0).addCountry("USA");
+        world.getWorld().get(0).addCountry("Kanada");
 
         //When
         BigDecimal peopleQuantity = world.getPeopleQuantity();
-        BigDecimal expectedResult = new BigDecimal("9999000099990000");
+        BigDecimal expectedResult = new BigDecimal("6000000000");
 
         //Then
         assertEquals(expectedResult, peopleQuantity);

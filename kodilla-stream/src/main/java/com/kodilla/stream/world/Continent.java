@@ -1,23 +1,26 @@
 package com.kodilla.stream.world;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 class Continent {
-    private List<Country> continent = new ArrayList<>();
+    private final String continentName;
+    private final List<Country> countryList;
 
-    public Continent(int countryNumber){
-        for(int i=0; i<countryNumber; i++)
-        continent.add(new Country(BigDecimal.valueOf(1111000011110000L)));
+    public Continent(String continentName) {
+        this.continentName = continentName;
+        this.countryList = new ArrayList<>();
     }
 
-    public void addCountrys(int countryNumber){
-        for(int i=0; i<countryNumber; i++)
-            continent.add(new Country(BigDecimal.valueOf(1111000011110000L)));
+    public void addCountry(String countryName){
+        countryList.add(new Country(countryName));
     }
 
-    public List<Country> getContinent() {
-        return new ArrayList<>(continent);
+    public List<Country> getCountryList() {
+        return new ArrayList<>(countryList);
+    }
+
+    public String getContinentName() {
+        return continentName;
     }
 }
