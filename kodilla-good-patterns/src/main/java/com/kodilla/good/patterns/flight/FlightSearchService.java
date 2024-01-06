@@ -6,7 +6,7 @@ import java.util.List;
 public class FlightSearchService {
 
     public List<Flight> flightsFrom(final City flightFrom) {
-        List<Flight> flights = new FlightDatabase().makeFlightList();
+        List<Flight> flights = new FlightDatabase().getFlightList();
         List<Flight> flightsFromList = new ArrayList<>();
         flights.stream().filter(f -> f.flightFrom().equals(flightFrom)).
                          filter(f -> f.flightFrom().hashCode() == flightFrom.hashCode()).
@@ -15,7 +15,7 @@ public class FlightSearchService {
     }
 
     public List<Flight> flightsTo(final City flightTo) {
-        List<Flight> flights = new FlightDatabase().makeFlightList();
+        List<Flight> flights = new FlightDatabase().getFlightList();
         List<Flight> flightsToList = new ArrayList<>();
         flights.stream().filter(f -> f.flightTo().equals(flightTo)).
                 filter(f -> f.flightTo().hashCode() == flightTo.hashCode()).
@@ -24,20 +24,23 @@ public class FlightSearchService {
     }
 
     public List<List<Flight>> connectedFlight(final City flightFrom, final City flightTo) {
-        List<Flight> flightsFromList = flightsFrom(flightFrom);
-        List<Flight> flightsToList = flightsTo(flightTo);
+        FlightSearchService flightSearchService = new FlightSearchService();
+        List<Flight> flightsFromList = flightSearchService.flightsFrom(flightFrom);
+        List<Flight> flightsToList = flightSearchService.flightsTo(flightTo);
 
         List<List<Flight>> connectedFlightsList = new ArrayList<>();
-        for (int i=0; i<flightsFromList.size(); i++){
-            connectedFlightsList.add(new ArrayList<>());
-            for (int j=0; j<flightsToList.size(); j++){
-                if(flightsFromList.get(i).flightTo() == flightsToList.get(j).flightFrom()){
-                    connectedFlightsList.get(i).add(flightsFromList.get(i));
-                    connectedFlightsList.get(i).add(flightsToList.get(j));
+        int i = 0;
+        for (Flight value : flightsFromList) {
+            for (Flight flight : flightsToList) {
+                if (value.flightTo().equals(flight.flightFrom())) {
+                    connectedFlightsList.add(new ArrayList<>());
+                    connectedFlightsList.get(i).add(value);
+                    connectedFlightsList.get(i).add(flight);
+                    i++;
                 }
             }
         }
 
-        return new ArrayList<List<Flight>>(connectedFlightsList);
+        return new ArrayList<>(connectedFlightsList);
     }
 }
