@@ -2,6 +2,8 @@ package com.kodilla.patterns.strategy.social;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class UserTestSuite {
 
     @Test
@@ -12,26 +14,26 @@ public class UserTestSuite {
         User generationZ = new GenerationZ();
 
         //When & Then
-        millenial.sharePost();
-        generationY.sharePost();
-        generationZ.sharePost();
+        assertEquals(millenial.sharePost(), "Facebook");
+        assertEquals(generationY.sharePost(), "Tweeter");
+        assertEquals(generationZ.sharePost(), "Snapchat");
     }
 
     @Test
     void testIndividualSharingStrategy() {
         //Given
-        User millenial = new Millenials();
+        User millenials = new Millenials();
         User generationY = new GenerationY();
         User generationZ = new GenerationZ();
 
         //When
-        millenial.setSocialPublisher(new TweeterPublisher());
+        millenials.setSocialPublisher(new TweeterPublisher());
         generationY.setSocialPublisher(new SnapchatPublisher());
         generationZ.setSocialPublisher(new FacebookPublisher());
 
         // Then
-        millenial.sharePost();
-        generationY.sharePost();
-        generationZ.sharePost();
+        assertEquals(millenials.getSocialPublisher(), "Tweeter");
+        assertEquals(generationY.getSocialPublisher(), "Snapchat");
+        assertEquals(generationZ.getSocialPublisher(), "Facebook");
     }
 }

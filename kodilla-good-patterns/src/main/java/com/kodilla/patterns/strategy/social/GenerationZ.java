@@ -1,10 +1,16 @@
 package com.kodilla.patterns.strategy.social;
 
 public class GenerationZ extends User {
-    SocialPublisher socialPublisher;
+    String name;
+    SocialPublisher socialPublisher = new SnapchatPublisher();
 
     public GenerationZ() {
-        this.socialPublisher = new SnapchatPublisher();
+        this.name = "GenZ";
+    }
+
+    @Override
+    public String getSocialPublisher() {
+        return socialPublisher.share();
     }
 
     @Override
